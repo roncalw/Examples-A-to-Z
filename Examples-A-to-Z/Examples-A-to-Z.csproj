@@ -44,14 +44,22 @@
   <ItemGroup>
     <Compile Include="Abstract-Class-W-Abstract-Method.cs" />
     <Compile Include="Abstract-Class.cs" />
+    <Compile Include="Anonymous-Method-As-Parameter.cs" />
+    <Compile Include="Anonymous-Method.cs" />
     <Compile Include="Delegate-As-Callback.cs" />
+    <Compile Include="Delegate-Instantiation-History.cs" />
     <Compile Include="Delegate-W-Invoke.cs" />
-    <Compile Include="Delegate-W-WO-Action-With-Helper.cs" />
+    <Compile Include="Delegate-W-WO-Action-W-Helper.cs" />
     <Compile Include="Delegate-W-WO-Action.cs" />
     <Compile Include="IComparable.cs" />
     <Compile Include="Indexer.cs" />
+    <Compile Include="Lambda-Expression-Multiple-Parameters.cs" />
+    <Compile Include="Lambda-Expression-Multiple-Statements.cs" />
+    <Compile Include="Lambda-Expression-No-Parameters.cs" />
+    <Compile Include="Lambda-Expression-W-WO-Func.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

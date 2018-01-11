@@ -15,7 +15,7 @@ using System;
 
 namespace Examples_A_to_Z
 {
-    class Delegate_W_WO_Action_With_Helper
+    class Delegate_W_WO_Action_W_Helper
     {
         public static void launchExample()
         {
