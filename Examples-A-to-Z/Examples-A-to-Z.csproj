@@ -59,6 +59,7 @@
     <Compile Include="Lambda-Expression-Multiple-Statements.cs" />
     <Compile Include="Lambda-Expression-No-Parameters.cs" />
     <Compile Include="Lambda-Expression-W-WO-Func-or-Action.cs" />
+    <Compile Include="Linq_Expressions.cs" />
     <Compile Include="Predicate-Delegate-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
