@@ -6,7 +6,7 @@ namespace Examples_A_to_Z
     {
         static void Main(string[] args)
         {
-            Lambda_Expression.launchExample();
+            Action_W_Method_Anonym_Lambda.launchExample();
 
             Console.ReadLine();
         }

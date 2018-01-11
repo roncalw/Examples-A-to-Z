@@ -8,7 +8,6 @@ Benefit of Action<T> Deleagate
 		Eg. In the following we only care about string, value can be anyword or letter. delegate void DisplayMessage(string value)
 	- Using Action<T> is like saying that that the variable to the right in a declaration will be a delegate to point to other methods with the same single parameter type.
 Cons of Action<T>
-	- Can only have one single parameter
 	- Cannot have a return type.
 */
 using System;
