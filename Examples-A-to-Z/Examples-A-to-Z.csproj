@@ -52,6 +52,7 @@
     <Compile Include="Delegate-W-Invoke.cs" />
     <Compile Include="Delegate-W-WO-Action-W-Helper.cs" />
     <Compile Include="Delegate-W-WO-Action.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="Func-W-Method-Anonym-Lambda.cs" />
     <Compile Include="IComparable.cs" />
     <Compile Include="Indexer.cs" />
