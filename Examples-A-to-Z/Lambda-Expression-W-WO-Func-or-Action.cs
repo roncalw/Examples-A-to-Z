@@ -44,9 +44,9 @@ namespace Examples_A_to_Z
             /*If not using Action, uncomment the delegate declaration above and run this statement instead: 
             Printer PrintStudentDetail = s => Console.WriteLine("Name: {0}, Age: {1} ", s.Name, s.Age);       */
 
-            Action<Student> PrintStudentDetail = s => Console.WriteLine("Name: {0}, Age: {1} ", s.Name, s.Age);
+            Action<Student> PrintStudentDetail = s => Console.WriteLine("Name: {0}, Age: {1} ", s.StudentName, s.Age);
 
-            Student std = new Student() { Name = "Bill", Age = 21 };
+            Student std = new Student() { StudentName = "Bill", Age = 21 };
 
             PrintStudentDetail(std);
 

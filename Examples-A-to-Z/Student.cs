@@ -8,8 +8,8 @@ namespace Examples_A_to_Z
 {
     public class Student
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int StudentID { get; set; }
+        public string StudentName { get; set; }
         public int Age { get; set; }
     }
 }
