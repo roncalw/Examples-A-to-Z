@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Examples_A_to_Z
 {
-    class Events
+    class Events_W_Arguments
     {
         /*
             Events in C# follow real like examples of events ... For example, Microsoft launches events for developers, to make them aware about the features of new or existing products. 
@@ -42,71 +42,72 @@ namespace Examples_A_to_Z
          */
         public static void launchExample()
         {
-            Number myNumber = new Number(100000);
-            myNumber.PrintMoney();
-            myNumber.PrintNumber();
+            Number1 myNumber1 = new Number1(100000);
+            myNumber1.PrintMoney1();
+            myNumber1.PrintNumber1();
+            myNumber1.PrintTemperature1();
         }
     }
 
-    public class PrintHelper
+    public class PrintHelper1
     {
         // declare delegate 
-        public delegate void BeforePrint();
+        public delegate void BeforePrint(string message);
 
         //declare event of type delegate
         public event BeforePrint beforePrintEvent;
 
-        public PrintHelper()
+        public PrintHelper1()
         {
 
         }
 
-        public void PrintNumber(int num)
+        public void PrintNumber1(int num)
         {
             //call delegate method before going to print
             if (beforePrintEvent != null)
-                beforePrintEvent(); //This will call the method that is the event handler in the class that subscribes to this class.
+                beforePrintEvent("PrintNumber"); //This will call the method that is the event handler in the class that subscribes to this class.
 
             Console.WriteLine("Number: {0,-12:N0}", num);
         }
 
-        public void PrintDecimal(int dec)
+        public void PrintDecimal1(int dec)
         {
             if (beforePrintEvent != null)
-                beforePrintEvent();
+                beforePrintEvent("PrintDecimal");
 
             Console.WriteLine("Decimal: {0:G}", dec);
         }
 
-        public void PrintMoney(int money)
+        public void PrintMoney1(int money)
         {
             if (beforePrintEvent != null)
-                beforePrintEvent();
+                beforePrintEvent("PrintMoney");
 
             Console.WriteLine("Money: {0:C}", money);
         }
 
-        public void PrintTemperature(int num)
+        public void PrintTemperature1(int num)
         {
             if (beforePrintEvent != null)
-                beforePrintEvent();
+                beforePrintEvent("PrintTemerature");
 
             Console.WriteLine("Temperature: {0,4:N1} F", num);
         }
-        public void PrintHexadecimal(int dec)
+        public void PrintHexadecimal1(int dec)
         {
             if (beforePrintEvent != null)
-                beforePrintEvent();
+                beforePrintEvent("PrintHexadecimal");
 
             Console.WriteLine("Hexadecimal: {0:X}", dec);
         }
     }
-    class Number
+    class Number1
     {
         //Create an instance of the publisher class above so that can subscribe in the constructor.
-        private PrintHelper _printHelper = new PrintHelper();
+        private PrintHelper1 _printHelper1 = new PrintHelper1();
 
-        public Number(int val)
+        public Number1(int val)
         {
             _value = val;
 
@@ -115,13 +116,13 @@ namespace Examples_A_to_Z
             //subscribe and create a handler
             //subscribe to the publisher's beforePrintEvent event (event delegate) (very similar to passing a method to a delegate)
             //this says that the local method, printHelper_beforePrintEvent, will be the event handler for when the publisher's beforePrintEvent is called. 
-            _printHelper.beforePrintEvent += printHelper_beforePrintEvent;
+            _printHelper1.beforePrintEvent += printHelper1_beforePrintEvent;
         }
 
         //beforePrintevent handler
-        void printHelper_beforePrintEvent()
+        void printHelper1_beforePrintEvent(string message)
         {
-            Console.WriteLine("BeforPrintEventHandler: PrintHelper is going to print a value");
+            Console.WriteLine("BeforePrintEvent fires from {0}", message);
         }
 
         private int _value;
@@ -132,14 +133,19 @@ namespace Examples_A_to_Z
             set { _value = value; }
         }
 
-        public void PrintMoney()
+        public void PrintMoney1()
         {
-            _printHelper.PrintMoney(_value);
+            _printHelper1.PrintMoney1(_value);
         }
 
-        public void PrintNumber()
+        public void PrintNumber1()
         {
-            _printHelper.PrintNumber(_value);
+            _printHelper1.PrintNumber1(_value);
+        }
+
+        public void PrintTemperature1()
+        {
+            _printHelper1.PrintTemperature1(_value);
         }
     }
 

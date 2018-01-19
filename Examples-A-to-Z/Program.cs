@@ -6,7 +6,7 @@ namespace Examples_A_to_Z
     {
         static void Main(string[] args)
         {
-            Linq_Expressions.launchExample();
+            EventArgsExample.launchExample();
 
             Console.ReadLine();
         }
