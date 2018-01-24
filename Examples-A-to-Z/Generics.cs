@@ -36,6 +36,25 @@ namespace Examples_A_to_Z
             MyGenericClass2<int,string> strGenericClass2 = new MyGenericClass2<int,string>("testing");  // Everywhere you see a T1 in the class definition, replace that T1 with int; everywhere you see a T2 in the class definition, replace that T2 with string
             string val4 = strGenericClass2.genericMethod(5);                                            //Returns a different type than what was supplied, because the class did not have the return var defined by T
 
+
+            /*                            MyGenericClass3<string> where the class uses one generic type on all fields but where the type is constrained to a reference type                  */
+            //Call a generic class that has multiple generic types for some of the fields
+            MyGenericClass3<string> strGenericClass3 = new MyGenericClass3<string>("testing");          // Everywhere you see a T1 in the class definition, replace that T1 with int; everywhere you see a T2 in the class definition, replace that T2 with string
+            string val5 = strGenericClass3.genericMethod("more testing");                                            //Returns a different type than what was supplied, because the class did not have the return var defined by T
+
+            //If instantiate with <int>, this will crash
+            //MyGenericClass3<int> intGenericClass4 = new MyGenericClass3<int>(568);
+            //int val6 = intGenericClass.genericMethod(394);
+
+
+
+            int a = 1;
+            int b = 2;
+
+            Swapper.Swap<int>(ref a, ref b);        //Can omit the type argument and the compiler will infer it. Eg. Swapper.Swap(ref a, ref b); Type reference will only work when having parameters
+            System.Console.WriteLine(a + " " + b);
+
+            Console.ReadLine();
         }
     }
 
@@ -106,4 +125,49 @@ namespace Examples_A_to_Z
             return genericMemberVariable;
         }
     }
+
+    /*
+     This class is defined with a contstrained generic type.
+        Constraint	                Description
+        where T: class	            Type must be reference type like a class or string
+        where T: struct	            Type must be value type like an integer.
+        where T: new()	            Type must have public parameterless constructor.
+        where T: <base class name>	Type must be or derive from the specified base class
+        where T: <interface name>	Type must be or implement the specified interface.
+        where T: U	                Type supplied for T must be or derive from the argument supplied for U.
+
+        If using multiple generic types and need multiple contraints just call the where clause mutliple times
+        Eg. class MyGenericClass<T1, T2> where T1: class where T2:struct
+    */
+    public class MyGenericClass3<T1> where T1: class                //T1 must be a reference type like a class of string
+    {
+        private T1 genericMemberVariable;
+
+        public MyGenericClass3(T1 value)
+        {
+            genericMemberVariable = value;
+        }
+
+        public T1 genericMethod(T1 genericParameter)
+        {
+            Console.WriteLine("Parameter type: {0}, value: {1}", typeof(T1).ToString(), genericParameter);
+
+            Console.WriteLine("Return type: {0}, value: {1}", typeof(T1).ToString(), genericMemberVariable);
+
+            return genericMemberVariable;
+        }
+    }
+
+
+    public class Swapper
+    {
+        public static void Swap<T>(ref T lhs, ref T rhs)
+        {
+            T temp;
+            temp = lhs;
+            lhs = rhs;
+            rhs = temp;
+        }
+    }
+
 }
