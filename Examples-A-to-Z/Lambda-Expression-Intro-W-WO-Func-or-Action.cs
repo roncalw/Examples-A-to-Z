@@ -16,12 +16,18 @@ namespace Examples_A_to_Z
 
         public static void launchExample()
         {
-            /*Using Lambda saves us from using the following: 
+            /*Using Lambda is a shorthand method for writing anonymous methods (methods on the fly that are not declared and given a name 
+             It saves us from using the following anonymous method assignment to the delegate (on the right side of the = sign): 
             
-            IsTeenAger isTeenAger = delegate (Student s) { return s.Age > 12 && s.Age < 20; };
+            using anonymous ...     IsTeenAger isTeenAger   = delegate (Student s) { return s.Age > 12 && s.Age < 20; };
+            using lambda ...        IsTeenAger isTeenAger   =                   s  =>       s.Age > 12 && s.Age < 20;
+            
+            The delegate isTeenAger is declared with the delegate type that returns a bool and accepts just the one paramter of the type Student -- IsTeenAger(Student stud) 
+            So as you can see here, s is the parameter on the left side of the => and that the expression on the right of the => is from the body of the anonymous which must return a boolean.
 
             */
-                                                    /*Func*/
+
+            /*Func*/
 
             /*Func similar to Action<T> is a delegate but can accept more than one parameter and can return something
             Do not need the delegate declaration above just like when using Action<T>
@@ -30,7 +36,16 @@ namespace Examples_A_to_Z
             /*If not using Func, uncomment the delegate declaration above and run this statement instead:              
             IsTeenAger isTeenAger = s => s.Age > 12 && s.Age < 20;                                      */
 
-            //s is a parameter, => is the lambda operator and s.Age > 12 && s.Age < 20 is the body expression
+            /*There are two parts here to the following statement
+                * Func<Student, bool> isTeenAger
+                    - makes it so that isTeenager is a delegate with a return type of bool that accepts just one parameter with the type "Student"
+
+                * s => s.Age > 12 && s.Age < 20
+                    - Lambda expression where
+                        - s is a parameter
+                        - => is the lambda operator and 
+                        - s.Age > 12 && s.Age < 20 is the body expression
+            */
             Func<Student, bool> isTeenAger = s => s.Age > 12 && s.Age < 20;
 
             Student stud = new Student() { Age = 25 };
