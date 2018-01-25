@@ -47,6 +47,9 @@
     <Compile Include="Action-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Anonymous-Method-As-Parameter.cs" />
     <Compile Include="Anonymous-Method.cs" />
+    <Compile Include="Class-Derived-Using-Base-Keyword-In-Body.cs" />
+    <Compile Include="Class-Derived-Using-Colon-Base-On-Constructors.cs" />
+    <Compile Include="Class-Using-Value-Keyword.cs" />
     <Compile Include="Decorator_Pattern.cs" />
     <Compile Include="Delegate-As-Callback.cs" />
     <Compile Include="Delegate-Instantiation-History.cs" />
@@ -65,6 +68,7 @@
     <Compile Include="Lambda-Expression-No-Parameters.cs" />
     <Compile Include="Lambda-Expression-Intro-W-WO-Func-or-Action.cs" />
     <Compile Include="Linq_Expressions.cs" />
+    <Compile Include="Polymorphism-Dynamic.cs" />
     <Compile Include="Predicate-Delegate-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

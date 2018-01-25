@@ -47,14 +47,30 @@ namespace Examples_A_to_Z
             //int val6 = intGenericClass.genericMethod(394);
 
 
+            /*                            Swapper class that is NOT generic but does have a generic method. Can constrain generic methods as well.                  */
 
             int a = 1;
             int b = 2;
 
             Swapper.Swap<int>(ref a, ref b);        //Can omit the type argument and the compiler will infer it. Eg. Swapper.Swap(ref a, ref b); Type reference will only work when having parameters
-            System.Console.WriteLine(a + " " + b);
+
+            System.Console.WriteLine(a + " " + b); //Note: Since the class parameters are by reference "a" and "b" will be processed in the Swapper class, the class will not have to return anything 
 
             Console.ReadLine();
+
+
+            /*                            SwapIfGreater class that is NOT generic but does have a generic method with a constraint that the type must implement the IComparable<T> Interface.                  */
+
+            int a1 = 1;
+            int b1 = 2;
+
+            Swapper.SwapIfGreater<int>(ref a1, ref b1);        //Can omit the type argument and the compiler will infer it. Eg. Swapper.Swap(ref a, ref b); Type reference will only work when having parameters
+
+            System.Console.WriteLine(a1 + " " + b1); //Note: Since the class parameters are by reference "a" and "b" will be processed in the Swapper class, the class will not have to return anything 
+
+            Console.ReadLine();
+            
+            
         }
     }
 
@@ -158,9 +174,10 @@ namespace Examples_A_to_Z
         }
     }
 
-
+    /*This is not a generic class, but it does have a generic method*/
     public class Swapper
     {
+        //Swap the left hand side with the right hand side
         public static void Swap<T>(ref T lhs, ref T rhs)
         {
             T temp;
@@ -168,6 +185,19 @@ namespace Examples_A_to_Z
             lhs = rhs;
             rhs = temp;
         }
+
+        public static void SwapIfGreater<T>(ref T lhs, ref T rhs) where T : System.IComparable<T>
+        {
+            T temp;
+            if (lhs.CompareTo(rhs) > 0)
+            {
+                temp = lhs;
+                lhs = rhs;
+                rhs = temp;
+            }
+        }
+
+
     }
 
 }
