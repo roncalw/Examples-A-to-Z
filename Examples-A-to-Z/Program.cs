@@ -6,7 +6,7 @@ namespace Examples_A_to_Z
     {
         static void Main(string[] args)
         {
-            Polymorphism.launchExample();
+            List_Arrays.launchExample();
 
             Console.ReadLine();
         }

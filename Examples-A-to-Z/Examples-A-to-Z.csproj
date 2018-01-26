@@ -61,13 +61,13 @@
     <Compile Include="Events.cs" />
     <Compile Include="Func-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Generics.cs" />
-    <Compile Include="IComparable.cs" />
     <Compile Include="Indexer.cs" />
     <Compile Include="Lambda-Expression-Multiple-Parameters.cs" />
     <Compile Include="Lambda-Expression-Multiple-Statements.cs" />
     <Compile Include="Lambda-Expression-No-Parameters.cs" />
     <Compile Include="Lambda-Expression-Intro-W-WO-Func-or-Action.cs" />
     <Compile Include="Linq_Expressions.cs" />
+    <Compile Include="List-Sort-W-WO-IComparable.cs" />
     <Compile Include="Polymorphism-Dynamic.cs" />
     <Compile Include="Predicate-Delegate-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Program.cs" />

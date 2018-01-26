@@ -69,6 +69,8 @@ namespace Examples_A_to_Z
             System.Console.WriteLine(a1 + " " + b1); //Note: Since the class parameters are by reference "a" and "b" will be processed in the Swapper class, the class will not have to return anything 
 
             Console.ReadLine();
+
+            //
             
             
         }
@@ -189,6 +191,23 @@ namespace Examples_A_to_Z
         public static void SwapIfGreater<T>(ref T lhs, ref T rhs) where T : System.IComparable<T>
         {
             T temp;
+            /* CompareTo is a .NET built in function that returns an inter
+               Eg. If T is String the String.CompareTo(value) method is called which works as follows:
+                    VALUE               CONDITION
+                    Less than zero      This instance precedes value (strB).
+
+                    Zero                This instance has the same position in the sort order as value.
+
+                    Greater than zero   This instance follows value. -or-value is null.
+
+              Eg. If T is Int32 the Int32.CompareTo(value) method is called which works as follows:
+                    VALUE               CONDITION
+                    Less than zero      This instance is less than value (value is what is passed in to the CompareTo(value) method.
+
+                    Zero                This instance is equal to value.
+
+                    Greater than zero   This instance is greater than value.
+            */
             if (lhs.CompareTo(rhs) > 0)
             {
                 temp = lhs;
