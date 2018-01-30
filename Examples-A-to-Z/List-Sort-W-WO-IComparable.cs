@@ -16,7 +16,8 @@ namespace Examples_A_to_Z
             sList.Add("Terry");
             sList.Add("Lou");
 
-            //The following sort method will only work on objects that implemented the IComparable or IComparable<T> interface; 
+            //The List<T>.Sort method has a few signatures with Sort() being the 1st example below.
+            //This parameterless sort method will only work on objects that implement the IComparable or IComparable<T> interface; 
             //therefore because this works on the string array below, this means that the String class implements this interface.
             sList.Sort();
 
@@ -26,12 +27,12 @@ namespace Examples_A_to_Z
             }
 
             /*
-             The sort method will not work therefore on objects that are custom built (which creates a custom type) unless the object implements this interface. 
+             The parameterless sort() method will not work therefore on objects that are custom built (which creates a custom type) unless the object implements this interface. 
              
              The reason why the sort() method will not work on objects that do not implement the interface is because when calling the List<T>.Sort method without any parameters it uses 
              the Comparer<T>.Default property to determine how to sort and therefore needs it. This property will actually look at T to see if it implements the IComparable<T> or IComparable 
              interface and if it does it will use the implementation in T to determine how to sort, which is by looking at the CompareTo method. (If T does not implement either interface it will 
-             actually throw an InvalidOperationException.)
+             actually throw an InvalidOperationException.) The Comparer<T>.Default property's value once assigned becomes then the default comparer for what the parameterless sort() method should use. 
              
              Eg. The sort method on the Dog object below will not crash because the Dog object implements the IComparable<T> interface, because implementing that interface passes the check from the 
              Comparer<T>.Default property that enforces T to implement either the IComparable<T> or IComparable interface so that it can then use that implementation of CompareTo in T. 
@@ -81,11 +82,11 @@ namespace Examples_A_to_Z
 
             When making your own comparer it is recommended by Microsoft to derive from Comparer<T> instead of implementing your own for the IComparer<T> interface.
 
-            The following is an example of deriving from Comparer<T>
+            The following is an example that uses a class that derives from Comparer<T>
             */
 
             /*Notice this is not sorting by the default (which is Name as defined in the Dog object). 
-            This is sorting by ID instead because that is what the Comparer class that we build says to sort by             
+            This is sorting by ID instead because that is how the Comparer class that we built below says to sort by             
             */
             dogs.Sort(new DogCompareByID()); 
             
@@ -106,6 +107,24 @@ namespace Examples_A_to_Z
             Console.WriteLine(x.ToString());
 
         }
+
+        //Class that exposes the default "comparer" via the CompareTo method that gets assigned to the Comparer<T>.Default property for the parameterless sort() method to use
+        //to determine how to sort. See the commented class immediately below this for the other way to expose the default "comparer"
+
+        //This class implements the IComparable<Dog> interface the other one that is commented out immediately below it implements the IComparable interface.
+        /*
+            Because this Dog class implements the Icomparable<Dog> interface vs Icomparable when the sort() creates an instance of the IComparable<Dog> interface pointing to this Dog class 
+            the method will look like this: ICompDog.CompareTo(Dog) since the Interface just has the one method with definition as CompareTo(T). So the Dog object is passed in, vs ...
+
+            If the Interface had been IComparable the call would have been like this: ICompDog.CompareTo(object Dog) Where Dog is declared as a System.Object
+
+            So using the IComparable<T> you are in charge to ensure that all instances of T can be compared against each others.
+
+            Interface Syntax: public interface IComparable<in T>
+            Body of Interface: CompareTo(T) //Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, 
+            follows, or occurs in the same position in the sort order as the other object
+        */
+
         public class Dog : IComparable<Dog>
         {       
             public Dog(string name, int id)

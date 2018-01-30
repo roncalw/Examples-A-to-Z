@@ -62,6 +62,10 @@
     <Compile Include="Func-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Generics.cs" />
     <Compile Include="Indexer.cs" />
+    <Compile Include="Interfaces-Assigned-from-Multiple-Instances-For-Methods.cs" />
+    <Compile Include="Interfaces-Assigned-from-Multiple-Instances-For-Properties.cs" />
+    <Compile Include="Interfaces-Assigned-from-Single-Instance.cs" />
+    <Compile Include="Interfaces-IEnumerable-Assigned-From-Array-and-List.cs" />
     <Compile Include="Lambda-Expression-Multiple-Parameters.cs" />
     <Compile Include="Lambda-Expression-Multiple-Statements.cs" />
     <Compile Include="Lambda-Expression-No-Parameters.cs" />

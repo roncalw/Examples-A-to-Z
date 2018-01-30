@@ -6,7 +6,7 @@ namespace Examples_A_to_Z
     {
         static void Main(string[] args)
         {
-            List_Arrays.launchExample();
+            Interfaces_IEnumerable_Assigned_From_Array_and_List.launchExample();
 
             Console.ReadLine();
         }
