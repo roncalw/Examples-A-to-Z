@@ -11,13 +11,17 @@ namespace Examples_A_to_Z
         public static void launchExample()
         {
             Counter c = new Counter(new Random().Next(10));
-            //The c.ThresholdReached is a delegate, so we are assigning the local method,c_ThresholdReached, to be called here, to that delegate.
-            //The publisher, Counter, will call this method that is assigned here once the event happens by adding 1 starting at 0 up to a random number up to 10
-            //The publishere used a shortcut method of creating the delegate (see the comment there below)
+
+            //The c.ThresholdReached is a delegate, so we are assigning the local method here, c_ThresholdReached, to be called from here, when the publisher runs the delegate.
             c.ThresholdReached += c_ThresholdReached;
 
-            Console.WriteLine(c.threshold);
+            //The publisher, Counter, will call this method that is assigned here once the event happens by adding 1 starting at 0 up to a random number up to 10
+            //The publisher used a shortcut method of creating the delegate (see the comment there below)
+            //Also, the publisher copied the delegate for thread safety sakes so it is the copy of the delegate that runs not the original delegate.
+
+            Console.WriteLine(c.threshold); //assigned via the publisher's constructor initiated from above: Counter c = new Counter(new Random().Next(10))
             Console.WriteLine("press 'a' key to increase total");
+
             while (Console.ReadKey(true).KeyChar == 'a')
             {
                 Console.WriteLine("adding one");
@@ -56,6 +60,8 @@ namespace Examples_A_to_Z
             }
         }
 
+        //Call the delegate ThresholdReached (created below) when called above in the Add function (which calls this when the private field total gets to be 
+        //greater than the int value that was passed into this class in the consructor.
         protected virtual void OnThresholdReached(ThresholdReachedEventArgs e)
         {
             /*Thread Safety - Copy the event delegate (creating a multicast Delegate) to a temporary local variable before raising it to avoid the following issue:
@@ -76,15 +82,17 @@ namespace Examples_A_to_Z
             }
         }
 
-        //Do not need to declare the delegate type since this is shortcut: 
-        public event EventHandler<ThresholdReachedEventArgs> ThresholdReached;
+        //Do not need to declare the delegate type since this is shortcut: (see the commented line just below this if not using this shortcut) 
+        //This shortcut says that the signature returns void and that sender object (publisher) is passed to subscriber's event handler and that the 
+        //EventArgs or a custom implemenation of it as here, is passed in as the EventArgs. T is used just for the EventArgs.
+        public event EventHandler<ThresholdReachedEventArgs> ThresholdReached; //looks like this: ThresholdReached(object sender, ThresholdReachedEventArgs whatever)
 
 
         //If not using the shortcut method must use the following line instead
         //Declare the delegate type
-        //public delegate void ThresholdReachedEventHandler(object sender, ThresholdReachedEventArgs whatever); 
+        //public delegate void ThresholdReached(object sender, ThresholdReachedEventArgs whatever); 
         //Declare the delegate
-        //public event ThresholdReachedEventHandler ThresholdReached;
+        //public event ThresholdReached thresholdReached;
 
 
     }

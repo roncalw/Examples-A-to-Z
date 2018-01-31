@@ -26,16 +26,13 @@ namespace Examples_A_to_Z
             
             An event is nothing but an encapsulated delegate. As shown in the delegate examples, a delegate is a reference type data type and they are declared and created as follows:
 
-                1st the delegate type is created
-                2nd the delegate is created with that type
-
-                public delegate void someEvent();
-                public someEvent someEvent;
+                1st the delegate type is created                ==>     public delegate void SomeEvent();
+                2nd the delegate is created with that type      ==>     public SomeEvent someEvent;
 
             The only change to creating the delegate as an event is by adding the event keyword as follows:
 
-                public delegate void someEvent();
-                public event someEvent someEvent;
+                                                                        public delegate void SomeEvent();
+                                                                        public event SomeEvent someEvent;
             
             Thus, a delegate becomes an event simply using the event keyword.
 
@@ -49,6 +46,9 @@ namespace Examples_A_to_Z
         }
     }
 
+    //The PrintHelper is the publisher and will do the notifying to any class that subscribes to it (Instantiates this class)
+    //In this particular program, the notifying will happen when the subscriber calls one of the print methods in this class
+    //Especially helpful for subscribers if the publisher was to notify when their method ended since it could take who knows how long.
     public class PrintHelper1
     {
         // declare delegate 
@@ -64,9 +64,13 @@ namespace Examples_A_to_Z
 
         public void PrintNumber1(int num)
         {
-            //call delegate method before going to print
+            //1st check if there really are any subscribers where they have assigned a method (handler) to this delegate method before going to print
             if (beforePrintEvent != null)
-                beforePrintEvent("PrintNumber"); //This will call the method that is the event handler in the class that subscribes to this class.
+
+            //If there was a subscription, this will call the method in the class that subsribed to it (the event handler)
+            //It will send the string parameter "PrintNumber" because it has to since the contract dictated by the signature of this delegate is that all
+            //those that susbscribe, must have a string parameter.
+            beforePrintEvent("PrintNumber");
 
             Console.WriteLine("Number: {0,-12:N0}", num);
         }
@@ -104,7 +108,7 @@ namespace Examples_A_to_Z
     }
     class Number1
     {
-        //Create an instance of the publisher class above so that can subscribe in the constructor.
+        //Create an instance of the publisher class above so that can subscribe in the constructor below.
         private PrintHelper1 _printHelper1 = new PrintHelper1();
 
         public Number1(int val)
@@ -119,7 +123,7 @@ namespace Examples_A_to_Z
             _printHelper1.beforePrintEvent += printHelper1_beforePrintEvent;
         }
 
-        //beforePrintevent handler
+        //This is the Event Handler - What to do when the Publisher calls the beforePrintEvent - it is the beforePrintEvent handler
         void printHelper1_beforePrintEvent(string message)
         {
             Console.WriteLine("BeforePrintEvent fires from {0}", message);
@@ -133,6 +137,7 @@ namespace Examples_A_to_Z
             set { _value = value; }
         }
 
+        //Call the publishers PrintMoney method which will run the beforePrintEvent
         public void PrintMoney1()
         {
             _printHelper1.PrintMoney1(_value);

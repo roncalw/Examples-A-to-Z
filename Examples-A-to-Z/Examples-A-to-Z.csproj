@@ -56,11 +56,13 @@
     <Compile Include="Delegate-W-Invoke.cs" />
     <Compile Include="Delegate-W-WO-Action-W-Helper.cs" />
     <Compile Include="Delegate-Intro-W-WO-Action.cs" />
-    <Compile Include="EventArg-W-EventHandlers-And-Thread-Safety.cs" />
+    <Compile Include="EventArg-W-EventHandlers-W-Thread-Safety.cs" />
+    <Compile Include="Events-As-Generic.cs" />
     <Compile Include="Events-W-Arguments.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="Func-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Generics.cs" />
+    <Compile Include="Genric-Custom-List.cs" />
     <Compile Include="Indexer.cs" />
     <Compile Include="Interfaces-Assigned-from-Multiple-Instances-For-Methods.cs" />
     <Compile Include="Interfaces-Assigned-from-Multiple-Instances-For-Properties.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="Yield-Return.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
