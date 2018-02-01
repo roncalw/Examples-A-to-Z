@@ -62,7 +62,8 @@
     <Compile Include="Events.cs" />
     <Compile Include="Func-W-Method-Anonym-Lambda.cs" />
     <Compile Include="Generics.cs" />
-    <Compile Include="Genric-Custom-List.cs" />
+    <Compile Include="Foreach-Generic-Custom-List.cs" />
+    <Compile Include="Foreach-IEnumerable-IEnumerator-foreach.cs" />
     <Compile Include="Indexer.cs" />
     <Compile Include="Interfaces-Assigned-from-Multiple-Instances-For-Methods.cs" />
     <Compile Include="Interfaces-Assigned-from-Multiple-Instances-For-Properties.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="Yield-Return.cs" />
+    <Compile Include="Foreach-W-Yield-Return.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

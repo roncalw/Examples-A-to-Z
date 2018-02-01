@@ -11,9 +11,12 @@ namespace Examples_A_to_Z
         public static void launchExample()
         {
             //Yield is keyword that interacts with the foreach-loop
-            //Yield allows each iteration in a foreach-loop be generated only when needed.
-            //In this way it can improve performance.
+            //Yield allows each iteration in a foreach-loop to be generated only when needed. Yield is actually an iterator, so you will see in the explanation below, it causes control
+            //to return back to the caller immediately whatever value it has and then iterate right back to the next iteration if applicable after the caller is done with the 
+            //individual return.
+            //In this way the yield can improve performance.
             //We use yield in methods that return the type IEnumerable (without any angle brackets), or the type IEnumerable<Type> with a type parameter in the angle brackets.
+            //When using yield however, in the IEnumerator.GetEnumerator method, the return type must be IEnumerator.
             /* 
              Yield return is similar to 
                 - a return statement (which passes control flow to the calling method), 
