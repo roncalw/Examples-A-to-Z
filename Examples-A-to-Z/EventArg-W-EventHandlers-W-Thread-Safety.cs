@@ -85,6 +85,7 @@ namespace Examples_A_to_Z
         //Do not need to declare the delegate type since this is shortcut: (see the commented line just below this if not using this shortcut) 
         //This shortcut says that the signature returns void and that sender object (publisher) is passed to subscriber's event handler and that the 
         //EventArgs or a custom implemenation of it as here, is passed in as the EventArgs. T is used just for the EventArgs.
+
         public event EventHandler<ThresholdReachedEventArgs> ThresholdReached; //looks like this: ThresholdReached(object sender, ThresholdReachedEventArgs whatever)
 
 

@@ -6,7 +6,7 @@ namespace Examples_A_to_Z
     {
         static void Main(string[] args)
         {
-            IEnumerable_IEnumerator_foreach.launchExample();
+            Events_As_Generic.launchExample();
 
             Console.ReadLine();
         }
