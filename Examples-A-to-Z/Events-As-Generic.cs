@@ -42,7 +42,10 @@ namespace Examples_A_to_Z
         public delegate void StackEventHandler<T, U>(T sender, U eventArgs);
         public event StackEventHandler<Stack<T>, StackEventArgs> stackEvent;
 
-        //This shortcut does not work, because the sender's type is "object" not Stack<T> as immediately above here in the longer version.
+        /*This shortcut does not work, because the sender's type is "object" not Stack<T> as immediately above here in the longer version.
+        The error happens on the event handlers assigned above, they have to be the same signature, when using the shortcut the signature looks like this 
+        EventHandler(object sender, StackEventArgs args)*/
+
         //public EventHandler<StackEventArgs> stackEvent;
 
         public void DoWork()
